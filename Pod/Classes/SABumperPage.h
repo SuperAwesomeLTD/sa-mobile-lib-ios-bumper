@@ -14,13 +14,12 @@ typedef void (^sabumpercallback)();
 
 //
 // define the SABumperController class
-@interface SABumperController : UIViewController
+@interface SABumperPage : UIViewController
 
-+ (void) playFromVC:(UIViewController*) parent;
++ (void) play;
 
-+ (void) playFromVC:(UIViewController*) parent
- andOverrideAppName:(NSString*) name
- andOverrideAppLogo:(UIImage*) image;
++ (void) playAndOverrideAppName:(NSString*) name
+             andAppLogo:(UIImage*) image;
 
 + (void) setCallback:(sabumpercallback)callback;
 

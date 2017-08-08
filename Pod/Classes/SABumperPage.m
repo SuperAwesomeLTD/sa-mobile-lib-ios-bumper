@@ -6,7 +6,7 @@
 //
 //
 
-#import "SABumperController.h"
+#import "SABumperPage.h"
 #import "SABumperImageUtils.h"
 
 //
@@ -16,9 +16,15 @@
 #define SMALL_LABEL_TXT @"A new site (which we don't own) will open in %ld seconds. Remember to stay safe online and ask an adult before buying anything!"
 #define MAX_COUNTER 3
 
+//
+// callback for the bumper
 static sabumpercallback callback = ^(){};
 
-@interface SABumperController ()
+//
+// top window
+static UIWindow *topWindow;
+
+@interface SABumperPage ()
 
 //
 // views
@@ -39,7 +45,7 @@ static sabumpercallback callback = ^(){};
 
 @end
 
-@implementation SABumperController
+@implementation SABumperPage
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -278,26 +284,41 @@ static sabumpercallback callback = ^(){};
     }
 }
 
-+ (SABumperController*) getNewVC {
-    SABumperController *newVC = [[SABumperController alloc] init];
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    topWindow.hidden = YES;
+    topWindow = nil;
+}
+
++ (SABumperPage*) getNewVC {
+    SABumperPage *newVC = [[SABumperPage alloc] init];
     newVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     return newVC;
 }
 
-+ (void) playFromVC:(UIViewController*) parent {
-    
-    SABumperController *newVC = [SABumperController getNewVC];
-    [parent presentViewController:newVC animated:true completion:nil];
++ (void) play {
+    SABumperPage *page = [SABumperPage getNewVC];
+    [self launch:page];
 }
 
-+ (void) playFromVC:(UIViewController*) parent
- andOverrideAppName:(NSString*) name
- andOverrideAppLogo:(UIImage*) image {
++ (void) playAndOverrideAppName:(NSString*) name
+                     andAppLogo:(UIImage*) image {
     
-    SABumperController *newVC = [SABumperController getNewVC];
-    newVC.appName = name;
-    newVC.appLogo = image;
-    [parent presentViewController:newVC animated:true completion:nil];
+    SABumperPage *page = [SABumperPage getNewVC];
+    page.appName = name;
+    page.appLogo = image;
+    [self launch:page];
+}
+
++ (void) launch: (SABumperPage*)bumper {
+    
+    UIViewController *dummy = [[UIViewController alloc] init];
+    
+    topWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    topWindow.rootViewController = dummy;
+    topWindow.windowLevel = UIWindowLevelAlert + 1;
+    [topWindow makeKeyAndVisible];
+    [topWindow.rootViewController presentViewController:bumper animated:true completion:nil];
 }
 
 + (void) setCallback:(sabumpercallback)cb {
