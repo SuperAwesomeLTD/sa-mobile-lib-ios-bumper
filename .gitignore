@@ -1,11 +1,11 @@
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
+Example/
 ## Build generated
 build/
 DerivedData/
-
+Pod/Assets/
 ## Various settings
 *.pbxuser
 !default.pbxuser
