@@ -14,11 +14,13 @@
 #define BIG_LABEL_TXT @"You're now leaving:\n%@"
 #define BIG_LABEL_TXT_NO_APP @"You're now leaving this app"
 #define SMALL_LABEL_TXT @"A new site (which we don't own) will open in %ld seconds. Remember to stay safe online and ask an adult before buying anything!"
-#define MAX_COUNTER 3
+#define MAX_COUNTER 100
 
 //
 // callback for the bumper
 static sabumpercallback callback = ^(){};
+static UIImage          *overridenLogo = NULL;
+static NSString         *overridenName = NULL;
 
 //
 // top window
@@ -30,13 +32,9 @@ static UIWindow *topWindow;
 // views
 @property (nonatomic, strong) UIImageView *bgView;
 @property (nonatomic, strong) UIImageView *logo;
+@property (nonatomic, strong) UIImageView *poweredBy;
 @property (nonatomic, strong) UILabel *bigLabel;
 @property (nonatomic, strong) UILabel *smallLabel;
-
-//
-// parameters
-@property (nonatomic, strong) NSString *appName;
-@property (nonatomic, strong) UIImage *appLogo;
 
 //
 // the timer
@@ -53,6 +51,7 @@ static UIWindow *topWindow;
     [self createBackground];
     [self createSupportPanel];
     [self createLogo];
+    [self createPoweredByLogo];
     [self createSmallLabel];
     [self createBigLabel];
 }
@@ -134,8 +133,8 @@ static UIWindow *topWindow;
     
     _logo = [[UIImageView alloc] init];
     
-    if (_appLogo != NULL) {
-        [_logo setImage:_appLogo];
+    if (overridenLogo != NULL) {
+        [_logo setImage:overridenLogo];
     } else {
         [_logo setImage:[SABumperImageUtils defaultLogo]];
     }
@@ -174,6 +173,47 @@ static UIWindow *topWindow;
     [NSLayoutConstraint activateConstraints:@[wc, hc, xc, yc]];
 }
 
+- (void) createPoweredByLogo {
+    
+    _poweredBy = [[UIImageView alloc] init];
+    [_poweredBy setContentMode:UIViewContentModeScaleAspectFit];
+    [_poweredBy setImage:[SABumperImageUtils poweredByImage]];
+    _poweredBy.translatesAutoresizingMaskIntoConstraints = false;
+    [_poweredBy setHidden:overridenLogo == NULL];
+    [_bgView addSubview:_poweredBy];
+    
+    NSLayoutConstraint *wc = [NSLayoutConstraint constraintWithItem:_poweredBy
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:100];
+    NSLayoutConstraint *hc = [NSLayoutConstraint constraintWithItem:_poweredBy
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.0
+                                                           constant:30];
+    NSLayoutConstraint *xc = [NSLayoutConstraint constraintWithItem:_poweredBy
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:_bgView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0];
+    NSLayoutConstraint *yc = [NSLayoutConstraint constraintWithItem:_poweredBy
+                                                          attribute:NSLayoutAttributeBottom
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:_bgView
+                                                          attribute:NSLayoutAttributeBottom
+                                                         multiplier:1.0
+                                                           constant:8];
+    [NSLayoutConstraint activateConstraints:@[wc, hc, xc, yc]];
+    
+}
+
 - (void) createSmallLabel {
     
     _smallLabel = [[UILabel alloc] init];
@@ -202,10 +242,10 @@ static UIWindow *topWindow;
     NSLayoutConstraint *bc = [NSLayoutConstraint constraintWithItem:_smallLabel
                                                           attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:_bgView
+                                                             toItem:_poweredBy
                                                           attribute:NSLayoutAttributeBottom
                                                          multiplier:1.0
-                                                           constant:-16.0];
+                                                           constant:-35.0];
     [NSLayoutConstraint activateConstraints:@[lc, rc, bc]];
     
 }
@@ -224,8 +264,8 @@ static UIWindow *topWindow;
     
     //
     // set proper app name
-    if (_appName != NULL) {
-        _bigLabel.text = [NSString stringWithFormat:BIG_LABEL_TXT, _appName];
+    if (overridenName != NULL) {
+        _bigLabel.text = [NSString stringWithFormat:BIG_LABEL_TXT, overridenName];
     }
     else if (localAppName != NULL) {
         _bigLabel.text = [NSString stringWithFormat:BIG_LABEL_TXT, localAppName];
@@ -298,19 +338,6 @@ static UIWindow *topWindow;
 
 + (void) play {
     SABumperPage *page = [SABumperPage getNewVC];
-    [self launch:page];
-}
-
-+ (void) playAndOverrideAppName:(NSString*) name
-                     andAppLogo:(UIImage*) image {
-    
-    SABumperPage *page = [SABumperPage getNewVC];
-    page.appName = name;
-    page.appLogo = image;
-    [self launch:page];
-}
-
-+ (void) launch: (SABumperPage*)bumper {
     
     UIViewController *dummy = [[UIViewController alloc] init];
     
@@ -318,7 +345,15 @@ static UIWindow *topWindow;
     topWindow.rootViewController = dummy;
     topWindow.windowLevel = UIWindowLevelAlert + 1;
     [topWindow makeKeyAndVisible];
-    [topWindow.rootViewController presentViewController:bumper animated:true completion:nil];
+    [topWindow.rootViewController presentViewController:page animated:true completion:nil];
+}
+
++ (void) overrideLogo:(UIImage*) image {
+    overridenLogo = image;
+}
+
++ (void) overrideName:(NSString*) name {
+    overridenName = name;
 }
 
 + (void) setCallback:(sabumpercallback)cb {

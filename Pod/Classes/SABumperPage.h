@@ -18,8 +18,8 @@ typedef void (^sabumpercallback)();
 
 + (void) play;
 
-+ (void) playAndOverrideAppName:(NSString*) name
-             andAppLogo:(UIImage*) image;
++ (void) overrideLogo:(UIImage*) image;
++ (void) overrideName:(NSString*) name;
 
 + (void) setCallback:(sabumpercallback)callback;
 

@@ -585,4 +585,65 @@
     return [UIImage imageWithData:imageData];
 }
 
+
++ (UIImage*) poweredByImage {
+    
+    NSMutableString *imageString = [@"" mutableCopy];
+    
+    [imageString appendString:@"iVBORw0KGgoAAAANSUhEUgAAAIYAAAAWCAYAAAAFH+TSAAAAAXNSR0IArs4c6QAA"];
+    [imageString appendString:@"ABxpRE9UAAAAAgAAAAAAAAALAAAAKAAAAAsAAAALAAAEND7aPXIAAAQASURBVGgF"];
+    [imageString appendString:@"7JhfiFVVFMZ9SLAMHTBKEOJGgYZIQw8a+XJ9CCFIQpCgEC4JiqE1JAWSD+chEpW4"];
+    [imageString appendString:@"9aJg5X0QNSyYRKhA4eA/pFBGEYqCOi9CmH+uiJCleft9Z9Y6LHdnZgLHB+Mu+O76"];
+    [imageString appendString:@"1rfWXnvfffacc+5MmdK3e7IDvV7vDXAcXAK/gf1g0CeDbwbfGg7jHw25PSG3Cf5s"];
+    [imageString appendString:@"iH3M12i7wMowbnVNndfLfwHmg8+Tum9Mewc/y/v1/STvAJt7CIxlyzRdTXKq6U8n"];
+    [imageString appendString:@"uTbxm4mWhodtrA7ieHaW5LLxCshdBgvUr2+TuANsqv7ax7MzJHUHiPaJLwFxXUzA"];
+    [imageString appendString:@"l4LPEq0u/BDxdF0iaBvgK0M8Fv3O19P3k7AD7PK8ZKfPE38Jrph+Hf8EWGuxu/g4"];
+    [imageString appendString:@"UL3bVchz4IILxvfhfwlaHb2IeArosDgWwvU4cfsbol65C+ZvTsJ29Fv4DrCpbyUb"];
+    [imageString appendString:@"vFM5tBlA7wTlOwb+JIg2J/T4PST2wpeEWPR96zk70dPwKe/pnoJ0zPGQ+zk0uOb6"];
+    [imageString appendString:@"/8bz5VpC3RdCb4BMvi5/txp93wPR/iDYHPsSPwxuhqIfPI/2TNBF14BViTZP9Whz"];
+    [imageString appendString:@"Ez0NtyFsNGhdj4DFIFp5p0J4EFwOidOaIFqXIActX+z95m39ed26yTWBrFmXv1uN"];
+    [imageString appendString:@"vi+U3f/9oVt5eVfAv5Skt/u86OkdR/12h/ob8OfBi+CnoP8X+hhF6SPsI7R3wa9J"];
+    [imageString appendString:@"g3V+MLKwuCErarl2P3nWngt1a0a/pwdDczLHMVBnXcu/nSRf8bWiHwg5vSMsAv5+"];
+    [imageString appendString:@"otQtfYxht8fQJV+0uU+MU+Opc+V6LMp8cdYgRx82PgDPgLQCDIOm5drwEXEZfBDI"];
+    [imageString appendString:@"slIY1aoadPUqY3xhfEC18CaQ6WCOgMz0BnwYFED6kHQZXP06oDCody6MVtz5iZ7O"];
+    [imageString appendString:@"0UVTb3/2Z/AijiLWnO2oTcSpPwjqbDni1iTR8H7oV0NuFzx9vwjpin4F+xjcrpRR"];
+    [imageString appendString:@"oseYo3ycJfk01KE7CmaW67Fs5ouTR6s2A66NK4A2VReiDWSDBvGGjVOuC+JhKYjL"];
+    [imageString appendString:@"i4nPwQhoGMQ7Nlb9ZRrfAqrRfIo7xlVT5m1MTlwA6XFtEx0MH6M5cqCeGq9Y1rT+"];
+    [imageString appendString:@"+o6yhuKJjDr9gnhAdfj1ID63CXs7QDw0570nusZGe43g9Sgk/EfijTaX/nnm9hfk"];
+    [imageString appendString:@"cTDNYTUrvMC8DpLgdsrXUnpTO3htrpABmXijZL3ey3EQ2gjwCyruF76A+3iNrTY2"];
+    [imageString appendString:@"8CG4egviXVu4YlnL54IrL/N6+Q4YBgNAVre2iQ5GNYbxd/QhVm//bm14bS9fo3vq"];
+    [imageString appendString:@"XgWy74P2wahUfW6BHaoiDk6ozYMu+iSIjxa9XywFeseofnHAHwLRjnjP6Cn4NBbB"];
+    [imageString appendString:@"05+uf6JN9zH/AAAA//864YhVAAAE9UlEQVTtmGuIFWUYx1UICSq2IorMPBEEmdTS"];
+    [imageString appendString:@"hdaiHAojui7RhbTohBYk0W4lVpvJJEFoxdKFMroc2iJDtKWQDPsw+CHXC3XSjG7W"];
+    [imageString appendString:@"KYoulGyllVkx/f4zz3P2dXbW86H9eB74zXN5n/cy7/vOO3POhDSXBiox+tHRBEQa"];
+    [imageString appendString:@"JJmvmAQ/EWb3YtehApIOkK94DIOW522pLAkplEfyJeSoviQpoDF2giTKku2Cn4gw"];
+    [imageString appendString:@"5rZyQRJ5TDoPpb1me47uowFVxQ8k5KyAUD7HeR2+C4PY02F9IbYZf0MhNqD+CrGx"];
+    [imageString appendString:@"7unmQp7cv4PYn9hnwBdBLLX2eyz2G3oXdDXv0wriZqBgUD4M/R7GrljMJ1K+RIvl"];
+    [imageString appendString:@"m0CbIoE6VIO6aisO/I7A9gWJgtioxad+WGessY01id5HHPTRTZuSziDWwE9g2GMH"];
+    [imageString appendString:@"0uS9Ba1ktdog6alWiZZ3YSFvQdkYyFkGCayFNfAGvAM7YAhehOOhDx6EO+BKmApd"];
+    [imageString appendString:@"cB3ca/Sgb4R5GqgkLuvUBqiJ0wIk0O92mE9sECTdVqeSu9k1XMgqEbWl/JrZVasT"];
+    [imageString appendString:@"4Usi+S743mcNW/VUP1tEtNqTJKC8htFqY9TJU1s1kNS8P2l8bWxJ84EIy8tscldm"];
+    [imageString appendString:@"NfLLPtSvoBPjF1jndbA7QKfJKngN1sETxtPo2cpF3wSPge7rajgFzoFbYA7cDofD"];
+    [imageString appendString:@"JIjhWVgNj8PCoL8B/C0wM4i9jC/pgZkwLCeQvzQANRp5pTJNuW4mgio0nyzPtbLY"];
+    [imageString appendString:@"fWlimtxqGLN4hXi3lVe8HF/xWNpjrol1QtVobjSVKx/UnsplS1e9bqitPDbtYyi7"];
+    [imageString appendString:@"H5VJKmH9Vjb5lxmL0XqSl8A1qoe+HvrMPgv7EVhi/iJsbSzV14bRhvoINoI20aGw"];
+    [imageString appendString:@"EyQf5iq7alNoM7n87AZ6GpwY+MutL82Pizac138X+wV4CeYqty02A0xIBHpCG1B6"];
+    [imageString appendString:@"6rSaLOpdAXqv6yj/B+5THbSL+vjeHH2LnGv2V2gd9ZJNcDQcBRXoA8lua2satl4P"];
+    [imageString appendString:@"F4NE/ZxkZR9kkfxkCb8/7rby3Va+Fz0LfjB/hsrbUjIDTJBOikGowX4nU0n6qBB1"];
+    [imageString appendString:@"DgaJXiMLMytNl6J15Et0pK/IrPyib4JXzdeJ8rDZdfSj8KQ6QeskcdmOkY0N/ZkF"];
+    [imageString appendString:@"s9PAcvV6kqhfPf0u8zCudQe9FnxjKawx74E1o26sHfh/M8Ck+qLPwD4OJA/AaZk1"];
+    [imageString appendString:@"8nTuxNcJMQz/ghZkKnwJ+4mPiOCGoEB1LgC9ciRnB3mf5KHsu0X9uLyH8Yc76Ltg"];
+    [imageString appendString:@"fuC7uczbautxmAFmdYrPLPoG0Ael5H64PLNGLlqUT0fc7FVxhPk/omeDFv70cGj4"];
+    [imageString appendString:@"veCLqydem0tyrPLQXZmXbzSdGJKt8HFmpek+tG+wS7Gft3iP1Z8Y9te2x2EGmGAt"];
+    [imageString appendString:@"VJnEBBcEBeuxpwe+TL2C/JjfhH2YcQh6LugkuQQmwy6Q3AP+KlmErQ9abSrJYrgt"];
+    [imageString appendString:@"s9L0TrSPbTn22xafhf7J7FvRJ8OpMHkcpqPdhGaAybwKXLZh7HAHPQDPBf752FoA"];
+    [imageString appendString:@"l7q1Meo1QsJDoF8rRfmawCR4pViAv83a+9bKTkB/A79DZLEh9Byzi2qK6rdlHGaA"];
+    [imageString appendString:@"mdXiazMs9eaw9UTrF4JODC2w7CGVoy8yX7HzLPa+xbajdfQLPcUTQf876NfEXlgF"];
+    [imageString appendString:@"x1idI7H1AbsH9L3yDCj/IGjARst7E7sbzgT9DNamENrEGoPGrvhK5Uv+A6p8rbkd"];
+    [imageString appendString:@"FN6mAAAAAElFTkSuQmCC"];
+     
+    NSData *imageData = [[NSData alloc] initWithBase64EncodedString:imageString options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [UIImage imageWithData:imageData];
+}
+
 @end
