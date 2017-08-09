@@ -14,7 +14,7 @@
 #define BIG_LABEL_TXT @"You're now leaving:\n%@"
 #define BIG_LABEL_TXT_NO_APP @"You're now leaving this app"
 #define SMALL_LABEL_TXT @"A new site (which we don't own) will open in %ld seconds. Remember to stay safe online and ask an adult before buying anything!"
-#define MAX_COUNTER 100
+#define MAX_COUNTER 3
 
 //
 // callback for the bumper
