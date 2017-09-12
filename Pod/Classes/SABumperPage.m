@@ -11,9 +11,9 @@
 
 //
 // constants for this
-#define BIG_LABEL_TXT @"You're now leaving:\n%@"
-#define BIG_LABEL_TXT_NO_APP @"You're now leaving this app"
-#define SMALL_LABEL_TXT @"A new site (which we don't own) will open in %ld seconds. Remember to stay safe online and ask an adult before buying anything!"
+#define BIG_LABEL_TXT @"Bye! You’re now leaving\n%@."
+#define BIG_LABEL_TXT_NO_APP @"Bye! You’re now leaving this app."
+#define SMALL_LABEL_TXT @"A completely new site will open in %ld seconds. Remember to stay safe online and don’t share your username or password with anyone!"
 #define MAX_COUNTER 3
 
 //
@@ -209,7 +209,7 @@ static UIWindow *topWindow;
                                                              toItem:_bgView
                                                           attribute:NSLayoutAttributeBottom
                                                          multiplier:1.0
-                                                           constant:8];
+                                                           constant:0];
     [NSLayoutConstraint activateConstraints:@[wc, hc, xc, yc]];
     
 }
@@ -243,9 +243,9 @@ static UIWindow *topWindow;
                                                           attribute:NSLayoutAttributeBottom
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:_poweredBy
-                                                          attribute:NSLayoutAttributeBottom
+                                                          attribute:NSLayoutAttributeTop
                                                          multiplier:1.0
-                                                           constant:-35.0];
+                                                           constant:-6.0];
     [NSLayoutConstraint activateConstraints:@[lc, rc, bc]];
     
 }
@@ -294,7 +294,7 @@ static UIWindow *topWindow;
                                                              toItem:_smallLabel
                                                           attribute:NSLayoutAttributeTop
                                                          multiplier:1.0
-                                                           constant:-5.0];
+                                                           constant:-6.0];
     [NSLayoutConstraint activateConstraints:@[lc, rc, bc]];
 }
 
