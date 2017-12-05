@@ -11,9 +11,9 @@
 
 //
 // constants for this
-#define BIG_LABEL_TXT @"Bye! You’re now leaving\n%@."
+#define BIG_LABEL_TXT @"Bye! You’re now leaving %@."
 #define BIG_LABEL_TXT_NO_APP @"Bye! You’re now leaving this app."
-#define SMALL_LABEL_TXT @"A completely new site will open in %ld seconds. Remember to stay safe online and don’t share your username or password with anyone!"
+#define SMALL_LABEL_TXT @"A new site will open in %ld seconds. Remember to stay safe online and don’t share your username or password with anyone!"
 #define MAX_COUNTER 3
 
 //
@@ -135,8 +135,6 @@ static UIWindow *topWindow;
     
     if (overridenLogo != NULL) {
         [_logo setImage:overridenLogo];
-    } else {
-        [_logo setImage:[SABumperImageUtils defaultLogo]];
     }
     [_logo setContentMode:UIViewContentModeScaleAspectFit];
     _logo.translatesAutoresizingMaskIntoConstraints = false;
@@ -179,7 +177,6 @@ static UIWindow *topWindow;
     [_poweredBy setContentMode:UIViewContentModeScaleAspectFit];
     [_poweredBy setImage:[SABumperImageUtils poweredByImage]];
     _poweredBy.translatesAutoresizingMaskIntoConstraints = false;
-    [_poweredBy setHidden:overridenLogo == NULL];
     [_bgView addSubview:_poweredBy];
     
     NSLayoutConstraint *wc = [NSLayoutConstraint constraintWithItem:_poweredBy
@@ -188,7 +185,7 @@ static UIWindow *topWindow;
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.0
-                                                           constant:100];
+                                                           constant:80];
     NSLayoutConstraint *hc = [NSLayoutConstraint constraintWithItem:_poweredBy
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
@@ -219,7 +216,7 @@ static UIWindow *topWindow;
     _smallLabel = [[UILabel alloc] init];
     _smallLabel.text = [NSString stringWithFormat:SMALL_LABEL_TXT, (long)_counter];
     _smallLabel.textColor = [UIColor whiteColor];
-    _smallLabel.font = [UIFont systemFontOfSize:14];
+    _smallLabel.font = [UIFont systemFontOfSize:12];
     _smallLabel.textAlignment = NSTextAlignmentCenter;
     _smallLabel.translatesAutoresizingMaskIntoConstraints = false;
     _smallLabel.numberOfLines = 0;
@@ -254,22 +251,18 @@ static UIWindow *topWindow;
     
     _bigLabel = [[UILabel alloc] init];
     _bigLabel.textColor = [UIColor whiteColor];
-    _bigLabel.font = [UIFont systemFontOfSize:18 weight:6];
+    _bigLabel.font = [UIFont systemFontOfSize:14 weight:6];
     _bigLabel.textAlignment = NSTextAlignmentCenter;
     _bigLabel.translatesAutoresizingMaskIntoConstraints = false;
     _bigLabel.numberOfLines = 0;
     [_bgView addSubview:_bigLabel];
-    
-    NSString *localAppName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
     
     //
     // set proper app name
     if (overridenName != NULL) {
         _bigLabel.text = [NSString stringWithFormat:BIG_LABEL_TXT, overridenName];
     }
-    else if (localAppName != NULL) {
-        _bigLabel.text = [NSString stringWithFormat:BIG_LABEL_TXT, localAppName];
-    } else {
+    else {
         _bigLabel.text = BIG_LABEL_TXT_NO_APP;
     }
     

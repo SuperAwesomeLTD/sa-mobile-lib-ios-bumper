@@ -10,6 +10,5 @@
 
 @interface SABumperImageUtils : NSObject
 + (UIImage*) backgroundImage;
-+ (UIImage*) defaultLogo;
 + (UIImage*) poweredByImage;
 @end
