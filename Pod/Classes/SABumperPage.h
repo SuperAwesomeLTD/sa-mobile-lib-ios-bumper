@@ -10,7 +10,7 @@
 
 //
 // define bumper callback
-typedef void (^sabumpercallback)();
+typedef void (^sabumpercallback)(void);
 
 //
 // define the SABumperController class

@@ -251,7 +251,7 @@ static UIWindow *topWindow;
     
     _bigLabel = [[UILabel alloc] init];
     _bigLabel.textColor = [UIColor whiteColor];
-    _bigLabel.font = [UIFont systemFontOfSize:14 weight:6];
+    _bigLabel.font = [UIFont boldSystemFontOfSize:14];
     _bigLabel.textAlignment = NSTextAlignmentCenter;
     _bigLabel.translatesAutoresizingMaskIntoConstraints = false;
     _bigLabel.numberOfLines = 0;
