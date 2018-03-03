@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SABumperPage_Example' do
+  pod 'SABumperPage', :path => '../'
+
+  target 'SABumperPage_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
